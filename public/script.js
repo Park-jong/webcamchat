@@ -17,6 +17,8 @@ navigator.mediaDevices.getUserMedia({
   videostream = stream;
 });
 
+
+
 mypeer.on('call', function(call){
   call.answer(videostream);
   const video = document.createElement('video');
@@ -46,33 +48,54 @@ socket.on('user-disconnected', (userId) => {
   if(videos[userId]) videos[userId].remove();
 });
 
-///////////////채팅 입력 이벤트///////////////////
-$('#chatinput').on("keyup", (key) => {
-  if(key.keyCode == 13){
-    socket.emit('chat message', myId, $('#chatinput').val());
-    $('#chatinput').val('');
-  }
-});
-
-$('#chatbutton').click(() => {
-  if($('#chatinput').val()){
-    socket.emit('chat message', myId, $('#chatinput').val());
-    $('#chatinput').val('');
-  }
-});
-////////////////////////////////////////////////
-
 //채팅 출력
-socket.on('chat message', (userid, msg) => {
+socket.on('chat message', (userid, name ,msg) => {
   li = $('<li>');
-  li.text(userid + '  :  ' + msg);
+  li.text(name + '  :  ' + msg);
   if (userid==myId){
     li.addClass("mine");
   }
   $('#messages').append(li)
 });
 
+///채팅 입력 이벤트///
+$('#chatinput').on("keyup", (key) => {
+  if(key.keyCode == 13){
+    socket.emit('chat message', $('#chatinput').val());
+    $('#chatinput').val('');
+  }
+});
 
+$('#chatbutton').click(() => {
+  if($('#chatinput').val()){
+    socket.emit('chat message', $('#chatinput').val());
+    $('#chatinput').val('');
+  }
+});
+///////////
+
+//이름 변경
+$('#namechange').click(()=>{
+  $('#nameinputspan').show();
+  $('#base').css('opacity', '0.5');
+});
+
+//이름 변경 취소
+$('#namecancel').click( ()=>{
+  $('#nameinput').val('');
+  $('#nameinputspan').hide();
+  $('#base').css('opacity', '1');
+});
+
+//이름 결정
+$('#namesubmit').click( ()=>{
+  if($('#nameinput').val()){
+    socket.emit('change name', $('#nameinput').val());
+    $('#nameinput').val('');
+    $('#nameinputspan').hide();
+    $('#base').css('opacity', '1');
+  }
+});
 
 //화면 출력
 function addVideoStream(video, stream){

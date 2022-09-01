@@ -52,17 +52,29 @@
     #chatinput {
       border: 3px solid black;
       padding: 10px 0px;
-      width: calc(100% - 53px);
-      margin-right: 50px;
+      width: calc(100% - 84px);
     }
 
     #chatbutton {
       border: 3px solid black;
       border-left: 0px;
+      border-right: 0px;
       width: 50px;
       background: rgb(130, 224, 255);
       padding: 10px;
+      right: 31px;
+      cursor: pointer;
+      position:absolute;
+    }
+
+    #namechange{
+      border: 3px solid black;
+      width: 25px;
+      height: 35px;
+      padding: 0px 0px;
       right: 0px;
+      background-color: #eee;
+      cursor: pointer;
       position:absolute;
     }
 
@@ -75,13 +87,28 @@
       background-color: white;
     }
 
+    #nameinputspan{
+      display: none;
+      position:fixed;
+      background-color: #eee;
+      width: 200px;
+      height: 100px;
+      font: 13px Helvetica, Arial;
+      left: calc(50% - 100px);
+      top: calc(50% - 50px);
+      text-align: center;
+    }
+
+    #nameinput{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 150px;
+    }
+
     #messages li {
       padding: 5px 10px;
     }
 
-    #messages li:nth-child(odd) {
-      background: #eee;
-    }
 
     .mine{
       color:blue;
@@ -90,15 +117,23 @@
   </style>
 </head>
 <body>
-  <div>
+  <div id="base">
     <div id="video-grid"></div>
     <div id="chat">
       <ul id="messages"></ul>
-      <div id="chatform">
+      <div id="chatform">       
         <input id="chatinput" autocomplete="off"/>
         <button id="chatbutton" type="button">Send</button>
+        <span id="namechange">이름<br>변경</span>
       </div>
     </div>
   </div>
+  <span id="nameinputspan">
+    <input type="text" id="nameinput"><br>
+    <div>
+      <input type="button" id="namesubmit" value="확인">
+      <input type="button" id="namecancel" value="취소">
+    </div>  
+  </span>
 </body>
 </html>
