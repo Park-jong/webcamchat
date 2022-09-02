@@ -11,4 +11,3 @@
   * socket.io: 3.0.3
   * uuid: 8.3.1
 * Docker 20.10.17
-  * node: 16
