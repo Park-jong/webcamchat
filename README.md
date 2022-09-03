@@ -5,8 +5,9 @@
 * css3
 * javascript (node.js 14.15.1)  
   * ejs: 3.1.5
+  * fs: 0.0.1-security
   * express: 4.17.1
-  * http: 0.0.1-security
+  * https: 1.0.0
   * peerjs: 1.3.1
   * socket.io: 3.0.3
   * uuid: 8.3.1
