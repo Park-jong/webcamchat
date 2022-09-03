@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset-"UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
     const ROOM_ID = '<%= roomId %>'
   </script>
   <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="script.js" defer></script>
   <title>Document</title>
   <style>
@@ -69,9 +70,9 @@
 
     #namechange{
       border: 3px solid black;
-      width: 25px;
-      height: 35px;
-      padding: 0px 0px;
+      width: 31px;
+      height: 41px;
+      padding: 0px;
       right: 0px;
       background-color: #eee;
       cursor: pointer;
@@ -124,7 +125,7 @@
       <div id="chatform">       
         <input id="chatinput" autocomplete="off"/>
         <button id="chatbutton" type="button">Send</button>
-        <span id="namechange">이름<br>변경</span>
+        <button id="namechange">이름<br>변경</button>
       </div>
     </div>
   </div>

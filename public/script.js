@@ -77,6 +77,9 @@ $('#chatbutton').click(() => {
 //이름 변경
 $('#namechange').click(()=>{
   $('#nameinputspan').show();
+  $('#chatinput').attr('disabled', true);
+  $('#chatbutton').attr('disabled', true);
+  $('#namechange').attr('disabled', true);
   $('#base').css('opacity', '0.5');
 });
 
@@ -84,6 +87,9 @@ $('#namechange').click(()=>{
 $('#namecancel').click( ()=>{
   $('#nameinput').val('');
   $('#nameinputspan').hide();
+  $('#chatinput').removeAttr('disabled');
+  $('#chatbutton').removeAttr('disabled');
+  $('#namechange').removeAttr('disabled');
   $('#base').css('opacity', '1');
 });
 
@@ -93,6 +99,9 @@ $('#namesubmit').click( ()=>{
     socket.emit('change name', $('#nameinput').val());
     $('#nameinput').val('');
     $('#nameinputspan').hide();
+    $('#chatinput').removeAttr('disabled');
+    $('#chatbutton').removeAttr('disabled');
+    $('#namechange').removeAttr('disabled');
     $('#base').css('opacity', '1');
   }
 });
