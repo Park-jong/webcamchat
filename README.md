@@ -1,9 +1,9 @@
 # 웹채팅
 
 ## 사용언어 및 실행환경
-* html5 (ejs)
+* EJS
 * css3
-* javascript (node.js 14.15.1)  
+* JavaScript (node.js 14.15.1)  
   * ejs: 3.1.5
   * fs: 0.0.1-security
   * express: 4.17.1
