@@ -37,6 +37,7 @@ io.on('connection', socket =>{
       socket.leave(roomid);
       console.log(userId + ' left room :' + roomid);
       io.to(roomid).emit('user-disconnected', userId);
+      names.delete(userId);
     });
 
     //메시지 전송
